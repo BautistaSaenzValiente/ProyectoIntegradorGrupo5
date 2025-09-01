@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   return (
+    <React.Fragment>
+      <Header/>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,6 +21,8 @@ function App() {
         </a>
       </header>
     </div>
+    <Footer/>
+    </React.Fragment>
   );
 }
 
