@@ -21,11 +21,6 @@ function Header() {
                         <a class="nav-link" href="favorites.html">Favoritas</a>
                     </li>
                 </ul>
-
-                <form class="search-form" action="results.html" method="get">
-                    <input type="text" class="" name="searchData" placeholder="Buscar..." value="" />
-                        <button type="submit" class="btn btn-success btn-sm">Buscar</button>
-                </form>
             </nav>
         </React.Fragment>
     )
