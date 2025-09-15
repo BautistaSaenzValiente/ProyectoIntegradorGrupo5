@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class Formulario extends Component {
     constructor(props) {
         super(props);
         this.state = { busqueda: '' }
     }
-    noSubmit(event) {
+    controlSubmit(event) {
         event.preventDefault();
+        this.props.history.push("/buscador/"+ this.state.busqueda);
     }
     controlCmabios(event) {
         this.setState({ busqueda: event.target.value })
@@ -14,7 +16,7 @@ class Formulario extends Component {
     render() {
         return (
             <React.Fragment>
-                <form onSubmit={(event) => this.noSubmit(event)}>
+                <form onSubmit={(event) => this.controlSubmit(event)}>
                     <input type="text" onChange={(event) => this.controlCmabios(event)} value={this.state.busqueda} />
                     <button type="submit">Buscar</button>
                 </form>
@@ -24,4 +26,4 @@ class Formulario extends Component {
     }
 }
 
-export default Formulario;
+export default withRouter(Formulario) ;
