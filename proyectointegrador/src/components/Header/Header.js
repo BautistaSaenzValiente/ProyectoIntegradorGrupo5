@@ -11,7 +11,7 @@ function Header() {
                 <ul class="main-nav">
 
                     <b><li><Link to="/">Home</Link></li></b>
-                    <b><li><Link to="/MasVistas">MasVistas</Link></li></b>
+                    <b><li><Link to="/series">Series</Link></li></b>
                     <b><li><Link to="/peliculas">Películas</Link></li></b>
                     <b><li><Link to="/favoritos">Favoritos</Link></li></b>
 
