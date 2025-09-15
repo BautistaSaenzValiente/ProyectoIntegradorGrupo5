@@ -24,7 +24,8 @@ class Detalle extends Component {
       return (
           <React.Fragment>
 
-                  this.state.loading ? <p>Cargando...</p> : pelicula={this.state.data}
+                  {this.state.loading ? <p>Cargando...</p> : this.state.data.map()}
+
 
           </React.Fragment>
       )

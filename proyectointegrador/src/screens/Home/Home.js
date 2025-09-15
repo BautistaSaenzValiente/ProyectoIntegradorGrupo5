@@ -6,7 +6,8 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pelicula: []
+            pelicula: [],
+            series: []
         }
     }
 
@@ -16,20 +17,20 @@ class Home extends Component {
 
       fetch(`https://api.themoviedb.org/3/movie/popular?&api_key=${api_key}`)
             .then(res => res.json())
-            .then(pelicula => {
-                this.setState({})
+            .then(data => {
+                this.setState({pelicula:data.results})
             
             })
             .catch(error => console.log(error))
     }
 
-    Vermas() {
+    series() {
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
 
-      fetch(`https://api.themoviedb.org/3/movie/popular?&api_key=${api_key}`)
+      fetch(`https://api.themoviedb.org/3/tv/popular?&api_key=${api_key}`)
             .then(res => res.json())
-            .then(pelicula => {
-                this.setState({})
+            .then( data => {
+                this.setState({series: data.results})
             })
     }
 
