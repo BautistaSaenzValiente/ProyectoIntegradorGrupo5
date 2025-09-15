@@ -17,7 +17,9 @@ class Home extends Component {
             .then(res => res.json())
             .then(pelicula => {
                 this.setState({})
+            
             })
+            .catch(error => console.log(error))
     }
 
     Vermas() {
