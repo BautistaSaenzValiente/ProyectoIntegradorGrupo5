@@ -1,5 +1,6 @@
 import React from 'react';
 import Formulario from '../Formulario/Formulario';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
@@ -7,19 +8,13 @@ function Header() {
         <React.Fragment>
             <nav>
                 <Formulario />
-                <ul class="nav nav-tabs my-4">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="movies.html">Películas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="series.html">Series</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="favorites.html">Favoritas</a>
-                    </li>
+                <ul class="main-nav">
+
+                    <b><li><Link to="/">Home</Link></li></b>
+                    <b><li><Link to="/MasVistas">MasVistas</Link></li></b>
+                    <b><li><Link to="/peliculas">Películas</Link></li></b>
+                    <b><li><Link to="/favoritos">Favoritos</Link></li></b>
+
                 </ul>
             </nav>
         </React.Fragment>
