@@ -44,7 +44,7 @@ class Card extends Component {
         let favoritosLocal = localStorage.getItem(`favoritos`)
         let favoritosParse = JSON.parse(favoritosLocal)
         if (favoritosParse !== null) {
-            if (favoritosParse.includes(id)) {
+            if (favoritosParse.includes(this.props.id)) {
                 this.setState({
                     esFavorito: true
                 })
@@ -57,8 +57,8 @@ class Card extends Component {
             <React.Fragment>
                 {
                     this.state.esFavorito ?
-                        <button onClick={() => this.sacarAFavoritos(id)}> Sacar de favoritos</button> :
-                        <button onClick={() => this.agregarAFavoritos(id)}>Agregar a favoritos</button>
+                        <button onClick={() => this.sacarAFavoritos(this.props.id)}> Sacar de favoritos</button> :
+                        <button onClick={() => this.agregarAFavoritos(this.props.id)}>Agregar a favoritos</button>
                 }
             </React.Fragment>
         )

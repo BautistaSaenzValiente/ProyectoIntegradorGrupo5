@@ -49,6 +49,17 @@ class Home extends Component {
          </li>
        ))}
      </ul>
+     <ul>
+       {this.state.series.map(series => (
+         <li key={series.id}>
+           <h3>{series.title}</h3>
+           <img
+             src={`https://image.tmdb.org/t/p/w500${this.series.poster_path}`}
+             alt={series.title}
+           />
+         </li>
+       ))}
+     </ul>
    </React.Fragment>
  );
 }
