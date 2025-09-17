@@ -51,15 +51,20 @@ class Card extends Component {
             }
         }
     }
+
+    render() {
+        return (
+            <React.Fragment>
+                {
+                    this.state.esFavorito ?
+                        <button onClick={() => this.sacarAFavoritos(id)}> Sacar de favoritos</button> :
+                        <button onClick={() => this.agregarAFavoritos(id)}>Agregar a favoritos</button>
+                }
+            </React.Fragment>
+        )
+
+    }
 }
-{
-    this.state.esFavorito ?
-        <button onClick={() => this.sacarAFavoritos(id)}> Sacar de favoritos</button> :
-        <button onClick={() => this.agregarAFavoritos(id)}>Agregar a favoritos</button>
-}
-
-
-
 
 
 export default Card;

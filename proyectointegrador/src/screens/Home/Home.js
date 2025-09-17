@@ -33,13 +33,25 @@ class Home extends Component {
                 this.setState({series: data.results})
             })
     }
+   
 
     render() {
-        return (
-            <React.Fragment>
-
-            </React.Fragment>
-        )
-    }
+ return (
+   <React.Fragment>
+     <ul>
+       {this.state.peliculas.map(pelicula => (
+         <li key={pelicula.id}>
+           <h3>{pelicula.title}</h3>
+           <img
+             src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
+             alt={pelicula.title}
+           />
+         </li>
+       ))}
+     </ul>
+   </React.Fragment>
+ );
 }
+}
+
 export default Home;
