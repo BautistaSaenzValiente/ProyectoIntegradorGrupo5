@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import Card from "../../components/Card/Card";
 
 
 class Home extends Component {
@@ -46,17 +47,19 @@ class Home extends Component {
              src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
              alt={pelicula.title}
            />
+           <Card/>
          </li>
        ))}
      </ul>
      <ul>
-       {this.state.series.map(series => (
-         <li key={series.id}>
-           <h3>{series.title}</h3>
+       {this.state.series.map(serie => (
+         <li key={serie.id}>
+           <h3>{serie.title}</h3>
            <img
-             src={`https://image.tmdb.org/t/p/w500${this.series.poster_path}`}
-             alt={series.title}
+             src={`https://image.tmdb.org/t/p/w500${this.serie.poster_path}`}
+             alt={serie.title}
            />
+           <Card/>
          </li>
        ))}
      </ul>
@@ -64,5 +67,6 @@ class Home extends Component {
  );
 }
 }
+
 
 export default Home;

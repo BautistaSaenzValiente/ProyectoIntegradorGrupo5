@@ -2,7 +2,10 @@ import React from 'react'
 
  const Footer = () => {
   return (
-    <div>Lucio Uranga, Bautista Saenz Valiente y Juan Durini </div>
+    <div>
+     <p>Lucio Uranga, Bautista Saenz Valiente y Juan Durini </p> 
+      
+      </div>
   )
 }
 
