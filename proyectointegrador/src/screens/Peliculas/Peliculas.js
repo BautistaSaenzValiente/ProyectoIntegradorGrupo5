@@ -2,7 +2,6 @@ import React from "react";
 import { Component } from "react";
 import Card from "../../components/Card/Card";
 
-
 class Peliculas extends Component {
     constructor(props) {
         super(props)
@@ -12,7 +11,6 @@ class Peliculas extends Component {
         }
     }
 
-
     componentDidMount() {
        const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
 
@@ -20,7 +18,6 @@ class Peliculas extends Component {
             .then(res => res.json())
             .then(data => {
                 this.setState({peliculas:data.results, loading: false})
-
             })
             .catch(error => console.log(error))
     }
@@ -29,7 +26,7 @@ class Peliculas extends Component {
         return (
             <React.Fragment>
 <h1>Todas las peliculas</h1>
-  {this.state.loading ? <p>Cargando...</p> : this.state.data.map()}
+  {this.state.loading ? <p>Cargando...</p> : null}
     <ul>
        {this.state.peliculas.map(pelicula => (
          <li key={pelicula.id}>
