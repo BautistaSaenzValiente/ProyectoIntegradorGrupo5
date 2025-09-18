@@ -33,12 +33,13 @@ class Peliculas extends Component {
            <h3>{pelicula.title}</h3>
            <img
              src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-             alt={pelicula.title}
+             alt={pelicula.overview}
            />
+           <div><Card/></div>
          </li>
        ))}
      </ul>
-       <Card/>
+      
             </React.Fragment>
         )
     }

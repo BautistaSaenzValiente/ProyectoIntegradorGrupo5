@@ -57,7 +57,7 @@ class Card extends Component {
             <React.Fragment>
                 {
                     this.state.esFavorito ?
-                        <button onClick={() => this.sacarAFavoritos(this.props.id)}> Sacar de favoritos</button> :
+                        <button onClick={() => this.sacarDeFavoritos(this.props.id)}> Sacar de favoritos</button> :
                         <button onClick={() => this.agregarAFavoritos(this.props.id)}>Agregar a favoritos</button>
                 }
             </React.Fragment>
