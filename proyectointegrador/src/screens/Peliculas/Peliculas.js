@@ -26,13 +26,13 @@ class Peliculas extends Component {
         return (
             <React.Fragment>
 <h1>Todas las peliculas</h1>
+  
   {this.state.loading ? <p>Cargando...</p> : null}
-    <ul>
+    <ul className="cards-container">
        {this.state.peliculas.map(pelicula => (
          <Card key={pelicula.id} info={pelicula} esSerie={false}/>
        ))}
      </ul>
-      
             </React.Fragment>
         )
     }

@@ -44,7 +44,7 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <h1>Peliculas:</h1>
-
+                <ul className="cards-container">
                     {this.state.peliculas.filter((_, i) => i < 4).map(pelicula => (
             
                             <Card key={pelicula.id} info={pelicula} esSerie={false}/>
@@ -60,7 +60,7 @@ class Home extends Component {
                             <Card key={serie.id} info={serie} esSerie={true}/>
 
                     ))}
-     
+                </ul>
                 <Link to="/series"><button>Ver mas</button></Link>
             </React.Fragment>
         );

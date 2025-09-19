@@ -29,7 +29,7 @@ class Series extends Component {
         return (
             <React.Fragment>
                 <h1>Todas las series</h1>
-                <ul>
+                <ul className="cards-container" >
                     {this.state.series.map(serie => (
                         
                          <Card key={serie.id} info={serie} esSerie={true}/> 

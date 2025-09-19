@@ -1,7 +1,7 @@
     import React from 'react';
     import Formulario from '../Formulario/Formulario';
     import { Link } from 'react-router-dom';
-
+    import "../Header/header.css"
 
     function Header() {
         return (
