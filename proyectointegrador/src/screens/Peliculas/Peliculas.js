@@ -29,16 +29,10 @@ class Peliculas extends Component {
   {this.state.loading ? <p>Cargando...</p> : null}
     <ul>
        {this.state.peliculas.map(pelicula => (
-         <li key={pelicula.id}>
-           <h3>{pelicula.title}</h3>
-           <img
-             src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-             alt={pelicula.title}
-           />
-         </li>
+         <Card key={pelicula.id} info={pelicula} esSerie={false}/>
        ))}
      </ul>
-       <Card/>
+      
             </React.Fragment>
         )
     }
