@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import Card from "../../components/Card/Card";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 
 class Home extends Component {
@@ -24,9 +24,9 @@ class Home extends Component {
 
             })
             .catch(error => console.log(error))
-            this.series()
+        this.series()
     }
-    
+
 
     series() {
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
@@ -36,7 +36,7 @@ class Home extends Component {
             .then(data => {
                 this.setState({ series: data.results })
             })
-             .catch(error => console.log(error))
+            .catch(error => console.log(error))
     }
 
 
@@ -44,35 +44,24 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <h1>Peliculas:</h1>
-                <ul>
-                    {this.state.peliculas.filter((_,i)=>i<4).map(pelicula => (
-                        <li key={pelicula.id}>
-                            <h3>{pelicula.title}</h3>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-                                alt={pelicula.overview}
-                            />
-                            <div><Card /></div>
-                        </li>
-                    ))}
-                </ul>
-               <Link to ="/peliculas"><button>Ver mas</button></Link>
-               
-               <h1>Series:</h1>
-                <ul>
-                    {this.state.series.filter((_,i)=>i<4).map(serie => (
-                        <li key={serie.id}>
-                            <h3>{serie.name}</h3>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
 
-                                alt={serie.overview}
-                            />
-                            <div><Card /></div>
-                        </li>
+                    {this.state.peliculas.filter((_, i) => i < 4).map(pelicula => (
+            
+                            <Card key={pelicula.id} info={pelicula} esSerie={false}/>
+                    
                     ))}
-                </ul>
-                <Link to ="/series"><button>Ver mas</button></Link>
+
+                <Link to="/peliculas"><button>Ver mas</button></Link>
+
+                <h1>Series:</h1>
+    
+                    {this.state.series.filter((_, i) => i < 4).map(serie => (
+        
+                            <Card key={serie.id} info={serie} esSerie={true}/>
+
+                    ))}
+     
+                <Link to="/series"><button>Ver mas</button></Link>
             </React.Fragment>
         );
     }

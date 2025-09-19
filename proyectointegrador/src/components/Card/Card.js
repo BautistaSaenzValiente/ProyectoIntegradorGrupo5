@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+
+
 class Card extends Component {
     constructor(props) {
         super(props)
@@ -55,11 +58,19 @@ class Card extends Component {
     render() {
         return (
             <React.Fragment>
+                <li key={this.props.key}>
+                    <h3>{this.props.esSerie ? `${this.props.info.name}` : `${this.props.info.title}`}</h3>
+                    <img
+                        src={`https://image.tmdb.org/t/p/w500${this.props.info.poster_path}`}
+                        alt={this.props.info.overview}
+                    />
+                </li>
                 {
                     this.state.esFavorito ?
                         <button onClick={() => this.sacarDeFavoritos(this.props.id)}> Sacar de favoritos</button> :
                         <button onClick={() => this.agregarAFavoritos(this.props.id)}>Agregar a favoritos</button>
                 }
+
             </React.Fragment>
         )
 

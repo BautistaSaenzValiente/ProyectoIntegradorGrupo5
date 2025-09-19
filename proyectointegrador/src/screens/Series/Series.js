@@ -31,18 +31,13 @@ class Series extends Component {
                 <h1>Todas las series</h1>
                 <ul>
                     {this.state.series.map(serie => (
-                        <li key={serie.id}>
-                            <h3>{serie.name}</h3>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
-                                
-                                alt={serie.overview}
-                            />
-                            <div><Card/></div>
-                        </li>
+                        
+                         <Card key={serie.id} info={serie} esSerie={true}/> 
+
+
                     ))}
                 </ul>
-                
+
             </React.Fragment>
         )
     }
