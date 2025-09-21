@@ -44,23 +44,29 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <h1>Peliculas:</h1>
-                <ul className="cards-container">
-                    {this.state.peliculas.filter((_, i) => i < 4).map(pelicula => (
-            
-                            <Card key={pelicula.id} info={pelicula} esSerie={false}/>
-                    
-                    ))}
+                <section>
+                    <article className="cards-container">
+                        {this.state.peliculas.filter((_, i) => i < 4).map(pelicula => (
 
-                <Link to="/peliculas"><button>Ver mas</button></Link>
+                            <Card key={pelicula.id} info={pelicula} esSerie={false} />
 
-                <h1>Series:</h1>
-    
-                    {this.state.series.filter((_, i) => i < 4).map(serie => (
-        
-                            <Card key={serie.id} info={serie} esSerie={true}/>
+                        ))}
 
-                    ))}
-                </ul>
+                        <Link to="/peliculas"><button>Ver mas</button></Link>
+                    </article>
+                </section>
+                <section>
+                    <h1>Series:</h1>
+                    <article className="cards-container">
+                        
+                        {this.state.series.filter((_, i) => i < 4).map(serie => (
+
+                            <Card key={serie.id} info={serie} esSerie={true} />
+
+                        ))}
+                    </article>
+                </section>
+
                 <Link to="/series"><button>Ver mas</button></Link>
             </React.Fragment>
         );

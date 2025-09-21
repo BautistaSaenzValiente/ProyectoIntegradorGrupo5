@@ -18,19 +18,49 @@ class Favoritos extends Component {
     }
   }
 
+  // render() {
+  //   return (
+  //     <React.Fragment>
+  //     <div>
+  //       <h2>Mis Favoritos</h2>
+  //       <ul className="cards-container">
+  //         {this.state.favoritos.length > 0 ? (<p>No tenés favoritos guardados todavía.</p>)
+  //         : (
+  //           <p>No tenés favoritos guardados todavía.</p>
+  //         )}
+  //       </ul>
+  //     </div>
+//       </React.Fragment >
+//     );
+//   }
+// }
+
+
   render() {
     return (
       <div>
-        <h2>Mis Favoritos</h2>
-        <ul className="cards-container">
-          {this.state.favoritos.length > 0 ? ()
-          : (
-            <p>No tenés favoritos guardados todavía.</p>
-          )}
-        </ul>
+        <h1>Mis Favoritos</h1>
+        {this.state.favoritos.length === 0 ? (
+          <p>No tenés favoritos aún.</p>
+        ) : (
+          <div className="grid">
+            {this.state.favoritos.map(peli => (
+              <Card
+                key={peli.id}
+                id={peli.id}
+                title={peli.title}
+                poster_path={peli.poster_path}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
 }
+
+
+
+
 
 export default Favoritos;

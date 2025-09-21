@@ -8,6 +8,11 @@
             <React.Fragment>
                 <nav>
                     <Formulario/>
+                    <img
+                    
+                        src='/pp.png'
+                        alt='pelis'
+                    />
                     <ul className="">
                         <b><li><Link to="/">Home</Link></li></b>
                         <b><li><Link to="/series">Series</Link></li></b>

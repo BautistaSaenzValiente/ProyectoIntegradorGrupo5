@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Card from "../../components/Card/Card";
 import React from "react";
-import Header from "../../components/Header/Header";
+
 
 class Buscador extends Component {
     constructor(props){
@@ -31,7 +31,6 @@ class Buscador extends Component {
     render(){
         return(
             <React.Fragment>
-                <Header />
                 {this.state.loading ? <p>cargando...</p> : this.state.data.map(unPersonaje => <Card data={unPersonaje} />  )}
             </React.Fragment>
         )

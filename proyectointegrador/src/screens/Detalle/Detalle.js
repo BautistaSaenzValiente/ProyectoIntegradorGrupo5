@@ -7,6 +7,7 @@ class Detalle extends Component {
       super(props)
       this.state = {
           pelicula: [],
+          serie: [],
           loading: true
       }
   }
@@ -17,6 +18,15 @@ class Detalle extends Component {
           .then(res => res.json())
           .then(data => {
               this.setState({pelicula: data.results})
+          })
+  }
+  series() {
+    const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
+
+      fetch(`https://api.themoviedb.org/3/tv/popular?&api_key=${api_key}`)
+          .then(res => res.json())
+          .then(data => {
+              this.setState({serie: data.results})
           })
   }
 

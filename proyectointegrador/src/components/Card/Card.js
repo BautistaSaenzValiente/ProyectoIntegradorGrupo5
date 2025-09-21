@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component,  } from 'react'
+import { Link } from 'react-router-dom'; 
 import "../Card/Card.css"
 
 
@@ -58,26 +59,31 @@ class Card extends Component {
     render() {
         return (
             <React.Fragment>
-                <li className="card" key={this.props.key}>
-  <h3 className="card-title">
-    {this.props.esSerie ? this.props.info.name : this.props.info.title}
-  </h3>
-  <img
-    className="card-img"
-    src={`https://image.tmdb.org/t/p/w500${this.props.info.poster_path}`}
-    alt={this.props.info.overview}
-  />
-  {
-    this.state.esFavorito ?
-      <button className="card-btn remove" onClick={() => this.sacarDeFavoritos(this.props.id)}>
-        Sacar de favoritos
-      </button>
-    :
-      <button className="card-btn add" onClick={() => this.agregarAFavoritos(this.props.id)}>
-        Agregar a favoritos
-      </button>
-  }
-</li>
+                <div className="card" key={this.props.key}>
+                    <h3 className="card-title">
+                        {this.props.esSerie ? this.props.info.name : this.props.info.title}
+                    </h3>
+                    <img
+                        className="card-img"
+                        src={`https://image.tmdb.org/t/p/w500${this.props.info.poster_path}`}
+                        alt={this.props.info.overview}
+                    />
+                    <Link to={`detalle/${this.props.info.id}`}><button>Detalle</button></Link>
+
+                    
+
+
+                    {
+                        this.state.esFavorito ?
+                            <button className="card-btn remove" onClick={() => this.sacarDeFavoritos(this.props.id)}>
+                                Sacar de favoritos
+                            </button>
+                            :
+                            <button className="card-btn add" onClick={() => this.agregarAFavoritos(this.props.id)}>
+                                Agregar a favoritos
+                            </button>
+                    }
+                </div>
 
 
             </React.Fragment>
