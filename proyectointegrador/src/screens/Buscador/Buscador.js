@@ -4,34 +4,47 @@ import React from "react";
 
 
 class Buscador extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             data: [],
             loading: true
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
         console.log(this.props);
 
-        let urlParams = new URLSearchParams(window.location.search)
-        let busqueda = urlParams.get('busqueda')
+        //let urlParams = new URLSearchParams(window.location.search)
+       // let busqueda = urlParams.get('busqueda')
+       let busqueda = this.props.match.params.busqueda;
         console.log(busqueda);
-    
-        fetch(``)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            this.setState({ data: data.results, loading: false })
-        })
-        
+
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${busqueda}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                this.setState({ data: data.results, loading: false })
+
+            })
+
+
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <React.Fragment>
-                {this.state.loading ? <p>cargando...</p> : this.state.data.map(unPersonaje => <Card data={unPersonaje} />  )}
+                {this.state.loading ? <p>cargando...</p> : this.state.data.map(resultado => (
+                    <Card
+                        key={resultado.id}
+                        info={resultado}
+                        id={resultado.id}
+                        title={resultado.title}
+                        poster_path={resultado.poster_path}
+                        overview={resultado.overview}
+                    />
+                ))}
             </React.Fragment>
         )
     }

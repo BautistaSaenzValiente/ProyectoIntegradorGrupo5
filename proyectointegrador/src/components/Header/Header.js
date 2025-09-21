@@ -7,17 +7,18 @@
         return (
             <React.Fragment>
                 <nav>
-                    <Formulario/>
-                    <img
+                    <img className="logo"
                     
                         src='/pp.png'
                         alt='pelis'
                     />
+                    <Formulario/>
+                    
                     <ul className="">
-                        <b><li><Link to="/">Home</Link></li></b>
-                        <b><li><Link to="/series">Series</Link></li></b>
-                        <b><li><Link to="/peliculas">Películas</Link></li></b>
-                        <b><li><Link to="/favoritos">Favoritos</Link></li></b>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/series">Series</Link></li>
+                        <li><Link to="/peliculas">Películas</Link></li>
+                        <li><Link to="/favoritos">Favoritos</Link></li>
                     </ul>
                 </nav>
             </React.Fragment>
