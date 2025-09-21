@@ -8,7 +8,9 @@ class Series extends Component {
         super(props)
         this.state = {
             series: [],
-            loading: true
+            loading: true,
+            pagina: 1,
+            filtro: ''
         }
     }
 
@@ -16,11 +18,22 @@ class Series extends Component {
     componentDidMount() {
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
 
-        fetch(`https://api.themoviedb.org/3/tv/popular?&api_key=${api_key}`)
+        fetch(`https://api.themoviedb.org/3/tv/popular?&api_key=${api_key}&page=${this.state.pagina}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ series: data.results, loading: false })
 
+            })
+            .catch(error => console.log(error))
+    }
+    cargarMas(){
+        let pagina = this.state.pagina + 1
+        const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
+
+        fetch(`https://api.themoviedb.org/3/tv/popular?&api_key=${api_key}&page=${pagina}`)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ series: this.state.series.concat(data.results), pagina: pagina })
             })
             .catch(error => console.log(error))
     }
@@ -36,6 +49,7 @@ class Series extends Component {
 
 
                     ))}
+                    <button onClick={() => this.cargarMas()}>Cargar mas</button>
                 </ul>
 
             </React.Fragment>

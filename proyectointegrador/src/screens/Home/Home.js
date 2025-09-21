@@ -9,7 +9,7 @@ class Home extends Component {
         super(props)
         this.state = {
             peliculas: [],
-            series: []
+            series: [],
         }
     }
 
