@@ -57,7 +57,6 @@ class Card extends Component {
         }
     }
 
-
     mostrarDescripcion = () => {
         this.setState(prev => ({ verDescripcion: !prev.verDescripcion }));
     };
@@ -84,11 +83,11 @@ class Card extends Component {
                     {this.state.verDescripcion && <p>{this.props.info.overview}</p>}
                     {
                         this.state.esFavorito ?
-                            <button className="card-btn remove" onClick={() => this.sacarDeFavoritos(this.props.id)}>
+                            <button className="card-btn remove" onClick={() => this.sacarDeFavoritos(this.props.info.id)}>
                                 Sacar de favoritos
                             </button>
                             :
-                            <button className="card-btn add" onClick={() => this.agregarAFavoritos(this.props.id)}>
+                            <button className="card-btn add" onClick={() => this.agregarAFavoritos(this.props.info.id)}>
                                 Agregar a favoritos
                             </button>
                     }
