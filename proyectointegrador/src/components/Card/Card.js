@@ -1,5 +1,5 @@
-import React, { Component,  } from 'react'
-import { Link } from 'react-router-dom'; 
+import React, { Component, } from 'react'
+import { Link } from 'react-router-dom';
 import "../Card/Card.css"
 
 
@@ -7,7 +7,8 @@ class Card extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            esFavorito: false
+            esFavorito: false,
+            verDescripcion: false
         }
     }
 
@@ -56,6 +57,12 @@ class Card extends Component {
         }
     }
 
+
+    mostrarDescripcion = () => {
+        this.setState(prev => ({ verDescripcion: !prev.verDescripcion }));
+    };
+
+
     render() {
         return (
             <React.Fragment>
@@ -69,10 +76,12 @@ class Card extends Component {
                         alt={this.props.info.overview}
                     />
                     <Link to={`detalle/${this.props.info.id}`}><button>Detalle</button></Link>
+ 
+                    <button onClick={this.mostrarDescripcion}>
+                        {this.state.verDescripcion ? "Ocultar descripción" : "Ver descripción"}
+                    </button>
 
-                    
-
-
+                    {this.state.verDescripcion && <p>{this.props.info.overview}</p>}
                     {
                         this.state.esFavorito ?
                             <button className="card-btn remove" onClick={() => this.sacarDeFavoritos(this.props.id)}>
@@ -86,7 +95,7 @@ class Card extends Component {
                 </div>
 
 
-            </React.Fragment>
+            </React.Fragment >
         )
 
     }
