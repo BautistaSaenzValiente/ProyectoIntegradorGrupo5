@@ -130,7 +130,7 @@ class Card extends Component {
                         src={`https://image.tmdb.org/t/p/w500${this.props.info.poster_path}`}
                         alt={this.props.info.overview}
                     />
-                    <Link to={`detalle/${this.props.info.id}`} esSerie={this.props.esSerie ? true : false}><button>Detalle</button></Link>
+                    <Link to={`${this.props.esSerie ? 'serie' : 'pelicula'}/detalle/${this.props.info.id}`} ><button>Detalle</button></Link>
 
                     <button onClick={this.mostrarDescripcion}>
                         {this.state.verDescripcion ? "Ocultar descripción" : "Ver descripción"}

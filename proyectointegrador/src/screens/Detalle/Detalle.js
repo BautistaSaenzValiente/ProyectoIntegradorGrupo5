@@ -6,30 +6,30 @@ class Detalle extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pelicula: {},
-            serie: {},
+            pelicula: [],
+            serie: [],
             loading: true
         }
     }
     componentDidMount() {
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
         const id = this.props.match.params.id
+        const type = this.props.match.params.type
 
-        fetch(`https://api.themoviedb.org/3/movie/${id}?&api_key=${api_key}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ pelicula: data, loading: false })
-            })
-    }
-    series() {
-        const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
-        const id = this.props.match.params.id
-
-        fetch(`https://api.themoviedb.org/3/tv/${id}?&api_key=${api_key}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ serie: data, loading: false })
-            })
+        if (type === "serie") {
+            fetch(`https://api.themoviedb.org/3/tv/${id}?&api_key=${api_key}`)
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({ serie: data, loading: false })
+                })
+        }
+        else {
+            fetch(`https://api.themoviedb.org/3/movie/${id}?&api_key=${api_key}`)
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({ pelicula: data, loading: false })
+                })
+        }
     }
 
     render() {
@@ -37,7 +37,7 @@ class Detalle extends Component {
             <React.Fragment>
 
                 {this.state.loading ? <p>Cargando...</p> :
-                    this.props.esSerie ? (<div key={this.state.serie.id}>
+                    this.props.match.params.type === "serie" ? (<div key={this.state.serie.id}>
                         <Card
                             info={this.state.serie} id={this.state.serie.id} esSerie={true} />
                         <div>
@@ -64,10 +64,6 @@ class Detalle extends Component {
                         </div>
                     </div>
                     )}
-
-
-
-
 
             </React.Fragment>
         )
