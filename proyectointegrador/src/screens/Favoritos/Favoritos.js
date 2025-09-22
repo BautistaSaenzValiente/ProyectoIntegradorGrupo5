@@ -27,7 +27,11 @@ class Favoritos extends Component {
       )
     }
   }
+  quitarFavoritos(id) {
+    let filtrados = this.state.favoritosPeliculas.filter(peli => peli.id !== id)
 
+    this.setState({ favoritosPeliculas: filtrados })
+  }
 
 
 
@@ -42,8 +46,12 @@ class Favoritos extends Component {
             <p>No tenés favoritos aún.</p>
           ) : (
             <div className="grid">
-              {this.state.favoritos.map(peli => (
-                <Card />
+              {this.state.favoritosPeliculas.map(peli => (
+                <Card 
+                key={peli.id} 
+                info={peli} 
+                esSerie={false} 
+                quitarFavoritos={() => this.state.quitarFavoritos(peli.id)} />
               ))}
             </div>
           )}

@@ -42,6 +42,11 @@ class Card extends Component {
         let favoritosToString = JSON.stringify(quitarFav)
         localStorage.setItem(`favoritos`, favoritosToString)
         this.setState({ esFavorito: false })
+
+        if (this.props.quitarFavoritos) {
+            this.props.quitarFavoritos(this.props.info.id)
+            
+        }
     }
 
 
