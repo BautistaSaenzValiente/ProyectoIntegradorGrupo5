@@ -13,51 +13,102 @@ class Card extends Component {
     }
 
     agregarAFavoritos(id) {
-        let favoritos = []
-        let favoritosLocal = localStorage.getItem(`favoritos`)
-        let favoritosParse = JSON.parse(favoritosLocal)
 
-        if (favoritosParse !== null) {
-            favoritosParse.push(id)
-            let favoritosToString = JSON.stringify(favoritosParse)
-            localStorage.setItem(`favoritos`, favoritosToString)
-            this.setState({ esFavorito: true })
-        } else {
-            favoritos.push(id)
-            let favoritosToString = JSON.stringify(favoritos)
-            localStorage.setItem(`favoritos`, favoritosToString)
-            this.setState({ esFavorito: true })
+
+        if (this.props.esSerie) {
+            let favoritos = []
+            let favoritosLocal = localStorage.getItem(`favoritosSeries`)
+            let favoritosParse = JSON.parse(favoritosLocal)
+
+            if (favoritosParse !== null) {
+                favoritosParse.push(id)
+                let favoritosToString = JSON.stringify(favoritosParse)
+                localStorage.setItem(`favoritosSeries`, favoritosToString)
+                this.setState({ esFavorito: true })
+            } else {
+                favoritos.push(id)
+                let favoritosToString = JSON.stringify(favoritos)
+                localStorage.setItem(`favoritosSeries`, favoritosToString)
+                this.setState({ esFavorito: true })
+            }
         }
+        else {
+            let favoritos = []
+            let favoritosLocal = localStorage.getItem(`favoritosPelis`)
+            let favoritosParse = JSON.parse(favoritosLocal)
 
-        console.log(id)
+            if (favoritosParse !== null) {
+                favoritosParse.push(id)
+                let favoritosToString = JSON.stringify(favoritosParse)
+                localStorage.setItem(`favoritosPelis`, favoritosToString)
+                this.setState({ esFavorito: true })
+            } else {
+                favoritos.push(id)
+                let favoritosToString = JSON.stringify(favoritos)
+                localStorage.setItem(`favoritosPelis`, favoritosToString)
+                this.setState({ esFavorito: true })
+            }
 
+            console.log(id)
+
+        }
     }
 
     sacarDeFavoritos(id) {
-        let favoritosLocal = localStorage.getItem(`favoritos`)
-        let favoritosParse = JSON.parse(favoritosLocal)
+        if (this.props.esSerie) {
+            let favoritosLocal = localStorage.getItem(`favoritosSeries`)
+            let favoritosParse = JSON.parse(favoritosLocal)
 
-        let quitarFav = favoritosParse.filter(fav => fav !== id)
+            let quitarFav = favoritosParse.filter(fav => fav !== id)
 
-        let favoritosToString = JSON.stringify(quitarFav)
-        localStorage.setItem(`favoritos`, favoritosToString)
-        this.setState({ esFavorito: false })
+            let favoritosToString = JSON.stringify(quitarFav)
+            localStorage.setItem(`favoritosSeries`, favoritosToString)
+            this.setState({ esFavorito: false })
 
-        if (this.props.quitarFavoritos) {
-            this.props.quitarFavoritos(this.props.info.id)
-            
+            if (this.props.quitarFavoritos) {
+                this.props.quitarFavoritos(this.props.info.id)
+
+            }
+        }
+        else {
+            let favoritosLocal = localStorage.getItem(`favoritosPelis`)
+            let favoritosParse = JSON.parse(favoritosLocal)
+
+            let quitarFav = favoritosParse.filter(fav => fav !== id)
+
+            let favoritosToString = JSON.stringify(quitarFav)
+            localStorage.setItem(`favoritosPelis`, favoritosToString)
+            this.setState({ esFavorito: false })
+
+            if (this.props.quitarFavoritos) {
+                this.props.quitarFavoritos(this.props.info.id)
+
+            }
         }
     }
 
 
     componentDidMount() {
-        let favoritosLocal = localStorage.getItem(`favoritos`)
-        let favoritosParse = JSON.parse(favoritosLocal)
-        if (favoritosParse !== null) {
-            if (favoritosParse.includes(this.props.info.id)) {
-                this.setState({
-                    esFavorito: true
-                })
+        if (this.props.esSerie) {
+            let favoritosLocal = localStorage.getItem(`favoritosSeries`)
+            let favoritosParse = JSON.parse(favoritosLocal)
+            if (favoritosParse !== null) {
+                if (favoritosParse.includes(this.props.info.id)) {
+                    this.setState({
+                        esFavorito: true
+                    })
+                }
+            }
+        }
+        else {
+            let favoritosLocal = localStorage.getItem(`favoritosPelis`)
+            let favoritosParse = JSON.parse(favoritosLocal)
+            if (favoritosParse !== null) {
+                if (favoritosParse.includes(this.props.info.id)) {
+                    this.setState({
+                        esFavorito: true
+                    })
+                }
             }
         }
     }
@@ -80,7 +131,7 @@ class Card extends Component {
                         alt={this.props.info.overview}
                     />
                     <Link to={`detalle/${this.props.info.id}`}><button>Detalle</button></Link>
- 
+
                     <button onClick={this.mostrarDescripcion}>
                         {this.state.verDescripcion ? "Ocultar descripción" : "Ver descripción"}
                     </button>
