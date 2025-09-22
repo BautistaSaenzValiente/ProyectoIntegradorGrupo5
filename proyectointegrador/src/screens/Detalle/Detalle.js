@@ -1,42 +1,58 @@
 import React from 'react'
 import { Component } from 'react'
+import Card from "../../components/Card/Card"
  
-
 class Detalle extends Component {
   constructor(props) {
       super(props)
       this.state = {
-          pelicula: [],
-          serie: [],
+          pelicula: {},
+          serie: {},
           loading: true
       }
   }
   componentDidMount() {
     const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
+    const id = this.props.match.params.id
 
-      fetch(`https://api.themoviedb.org/3/movie/popular?&api_key=${api_key}`)
+      fetch(`https://api.themoviedb.org/3/movie/${id}?&api_key=${api_key}`)
           .then(res => res.json())
           .then(data => {
-              this.setState({pelicula: data.results})
+              this.setState({pelicula: data, loading:false})
           })
   }
   series() {
     const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
+    const id = this.props.match.params.id
 
-      fetch(`https://api.themoviedb.org/3/tv/popular?&api_key=${api_key}`)
+      fetch(`https://api.themoviedb.org/3/tv/${id}?&api_key=${api_key}`)
           .then(res => res.json())
           .then(data => {
-              this.setState({serie: data.results})
+              this.setState({serie: data, loading:false})
           })
   }
 
   render() {
       return (
           <React.Fragment>
-
-                  {this.state.loading ? <p>Cargando...</p> : this.state.data.map()}
-
-
+                  {this.state.loading ? <p>Cargando...</p> : 
+                    (<div key={this.state.pelicula.id}>
+                        <Card
+                        info= {this.state.pelicula} id={this.state.pelicula.id} esSerie={false}/>
+                        <div>
+                            <ul>
+                                <li>rating: {this.state.pelicula.vote_count} </li>
+                                <li>estreno: {this.state.pelicula.release_date}</li>
+                                <li>duracion: {this.state.pelicula.video}</li>
+                                <li>sinopsis: {this.state.pelicula.overview}</li>
+                                <li>genero: {this.state.pelicula.genre_ids}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    )}
+                    
+                    
+                    
           </React.Fragment>
       )
   }
