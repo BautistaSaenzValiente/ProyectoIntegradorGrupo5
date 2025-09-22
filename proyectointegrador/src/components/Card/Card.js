@@ -65,7 +65,7 @@ class Card extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="card" key={this.props.key}>
+                <div className="card" key={this.props.info.key}>
                     <h3 className="card-title">
                         {this.props.esSerie ? this.props.info.name : this.props.info.title}
                     </h3>

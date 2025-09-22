@@ -3,7 +3,7 @@ import "../Footer/Footer.css"
 
  const Footer = () => {
   return (
-    <div class="footer">
+    <div className="footer">
      <p>Lucio Uranga, Bautista Saenz Valiente y Juan Durini </p> 
       
       </div>
