@@ -78,10 +78,12 @@ class Favoritos extends Component {
       <React.Fragment >
         <div>
           <h1>Mis Favoritos</h1>
+          
           {this.state.favoritosPeliculas.length === 0 ? (
             <p>No tenés peliculas favoritas aún.</p>
           ) : (
             <div className="grid">
+              <h2>Tus Peliculas favoritas</h2>
               {this.state.favoritosPeliculas.map(peli => (
                 <Card
                   key={peli.id}
@@ -98,6 +100,7 @@ class Favoritos extends Component {
           ) : (
             
             <div className="grid">
+              <h2>Tus Series favoritas</h2>
               {this.state.favoritosSeries.map(peli => (
                 <Card
                   key={peli.id}

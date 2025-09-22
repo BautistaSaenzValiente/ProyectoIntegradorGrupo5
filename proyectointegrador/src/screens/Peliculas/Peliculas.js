@@ -9,7 +9,7 @@ class Peliculas extends Component {
             peliculas: [],
             loading: true,
             pagina: 1,
-            filtro: ''
+            busqueda: ''
         }
     }
 
@@ -25,7 +25,7 @@ class Peliculas extends Component {
     }
 
 
-    cargarMas(){
+    cargarMas() {
         let pagina = this.state.pagina + 1
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
 
@@ -38,11 +38,28 @@ class Peliculas extends Component {
     }
 
 
+    controlSubmit(event) {
+        event.preventDefault();
+         this.props.history.push("/buscador/"+ this.state.busqueda);
+    }
+    controlCmabios(event) {
+        this.setState({ busqueda: event.target.value })
+    }
+
+
 
     render() {
         return (
             <React.Fragment>
                 <h1>Todas las peliculas</h1>
+
+                <form onSubmit={(event) => this.controlSubmit(event)}>
+                    <input type="text" onChange={(event) => this.controlCmabios(event)} value={this.state.busqueda.peliculas} />
+                    <button type="submit">Buscar dentro de peliculas</button>
+                </form>
+
+                {
+                }
 
                 {this.state.loading ? <p>Cargando...</p> : null}
                 <ul className="cards-container">

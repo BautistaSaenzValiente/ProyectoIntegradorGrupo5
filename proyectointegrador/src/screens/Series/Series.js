@@ -10,7 +10,7 @@ class Series extends Component {
             series: [],
             loading: true,
             pagina: 1,
-            filtro: ''
+            busqueda: ''
         }
     }
 
@@ -38,11 +38,23 @@ class Series extends Component {
             .catch(error => console.log(error))
     }
 
+    controlSubmit(event) {
+        event.preventDefault();
+         this.props.history.push("/buscador/"+ this.state.busqueda);
+    }
+    controlCmabios(event) {
+        this.setState({ busqueda: event.target.value })
+    }
+
     render() {
         return (
             <React.Fragment>
                 <h1>Todas las series</h1>
                 <ul className="cards-container" >
+                     <form onSubmit={(event) => this.controlSubmit(event)}>
+                    <input type="text" onChange={(event) => this.controlCmabios(event)} value={this.state.busqueda.series} />
+                    <button type="submit">Buscar dentro de las series</button>
+                </form>
                     {this.state.series.map(serie => (
                         
                          <Card key={serie.id} info={serie} esSerie={true}/> 
