@@ -19,7 +19,7 @@ class Buscador extends Component {
         //let urlParams = new URLSearchParams(window.location.search)
        // let busqueda = urlParams.get('busqueda')
        let busqueda = this.props.match.params.busqueda;
-        console.log(busqueda);
+      
 
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${busqueda}`)
             .then(res => res.json())

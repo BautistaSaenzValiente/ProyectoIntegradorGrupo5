@@ -20,7 +20,6 @@ class Formulario extends Component {
                     <input type="text" onChange={(event) => this.controlCmabios(event)} value={this.state.busqueda} />
                     <button type="submit">Buscar</button>
                 </form>
-                <h2>{this.state.busqueda}</h2>
             </React.Fragment>
         )
     }

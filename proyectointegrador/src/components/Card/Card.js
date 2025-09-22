@@ -49,7 +49,7 @@ class Card extends Component {
         let favoritosLocal = localStorage.getItem(`favoritos`)
         let favoritosParse = JSON.parse(favoritosLocal)
         if (favoritosParse !== null) {
-            if (favoritosParse.includes(this.props.id)) {
+            if (favoritosParse.includes(this.props.info.id)) {
                 this.setState({
                     esFavorito: true
                 })
