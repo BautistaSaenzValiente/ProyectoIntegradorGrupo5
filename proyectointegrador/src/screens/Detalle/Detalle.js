@@ -42,11 +42,10 @@ class Detalle extends Component {
                             info={this.state.serie} id={this.state.serie.id} esSerie={true} />
                         <div>
                             <ul>
-                                <li>rating: {this.state.serie.vote_count} </li>
-                                <li>estreno: {this.state.serie.release_date}</li>
-                                <li>duracion: {this.state.serie.video}</li>
+                                <li>rating: {this.state.serie.vote_average} </li>
+                                <li>estreno: {this.state.serie.first_air_date}</li>
                                 <li>sinopsis: {this.state.serie.overview}</li>
-                                <li>genero: {this.state.serie.genre_ids}</li>
+                                <li>genero: {this.state.serie.genres[0].name}</li>
                             </ul>
                         </div>
                     </div>
@@ -55,11 +54,11 @@ class Detalle extends Component {
                             info={this.state.pelicula} id={this.state.pelicula.id} esSerie={false} />
                         <div>
                             <ul>
-                                <li>rating: {this.state.pelicula.vote_count} </li>
+                                <li>rating: {this.state.pelicula.vote_average}</li>
                                 <li>estreno: {this.state.pelicula.release_date}</li>
-                                <li>duracion: {this.state.pelicula.video}</li>
+                                <li>duracion: {this.state.pelicula.runtime}</li>
                                 <li>sinopsis: {this.state.pelicula.overview}</li>
-                                <li>genero: {this.state.pelicula.genre_ids}</li>
+                                <li>genero: {this.state.pelicula.genres[0].name}</li>
                             </ul>
                         </div>
                     </div>
