@@ -15,9 +15,6 @@ class Buscador extends Component {
     componentDidMount() {
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
         console.log(this.props);
-
-        //let urlParams = new URLSearchParams(window.location.search)
-        // let busqueda = urlParams.get('busqueda')
         let busqueda = this.props.match.params.busqueda;
 
 
@@ -34,10 +31,10 @@ class Buscador extends Component {
 
     componentDidUpdate(prevProps) {
 
-        console.log(prevProps.match.params.query, this.props.match.params.query);
+        console.log(prevProps.match.params.busqueda, this.props.match.params.busqueda);
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
-        let propsAntiguas = prevProps.match.params.query
-        let propsNuevas = this.props.match.params.query
+        let propsAntiguas = prevProps.match.params.busqueda
+        let propsNuevas = this.props.match.params.busqueda
 
         if (propsAntiguas !== propsNuevas) {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${propsNuevas}`)
