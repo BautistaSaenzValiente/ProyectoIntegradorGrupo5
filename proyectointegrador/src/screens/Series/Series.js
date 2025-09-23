@@ -26,7 +26,7 @@ class Series extends Component {
             })
             .catch(error => console.log(error))
     }
-    cargarMas(){
+    cargarMas() {
         let pagina = this.state.pagina + 1
         const api_key = `63e3f6a0efe9754e92ac87caf88e971c`
 
@@ -38,26 +38,35 @@ class Series extends Component {
             .catch(error => console.log(error))
     }
 
-    controlSubmit(event) {
-        event.preventDefault();
-         this.props.history.push("/buscador/"+ this.state.busqueda);
-    }
+
+
     controlCmabios(event) {
         this.setState({ busqueda: event.target.value })
     }
 
     render() {
+        const seriesFiltradas = this.state.series.filter(serie =>
+            serie.name.toLowerCase().includes(this.state.busqueda.toLowerCase())
+        );
         return (
             <React.Fragment>
                 <h1>Todas las series</h1>
                 <ul className="cards-container" >
-                     <form onSubmit={(event) => this.controlSubmit(event)}>
-                    <input type="text" onChange={(event) => this.controlCmabios(event)} value={this.state.busqueda.series} />
-                    <button type="submit">Buscar dentro de las series</button>
-                </form>
+                    <input
+                        type="text"
+                        placeholder="Buscar..."
+                        onChange={(event) => this.controlCmabios(event)}
+                        value={this.state.busqueda}
+                    />
+                    <ul className="cards-container">
+                        {seriesFiltradas.map(serie => (
+                            <Card key={serie.id} info={serie} esSerie={true} />
+                        ))}
+                    </ul>
+
                     {this.state.series.map(serie => (
-                        
-                         <Card key={serie.id} info={serie} esSerie={true}/> 
+
+                        <Card key={serie.id} info={serie} esSerie={true} />
 
 
                     ))}

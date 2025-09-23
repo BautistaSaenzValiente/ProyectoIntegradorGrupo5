@@ -38,25 +38,31 @@ class Peliculas extends Component {
     }
 
 
-    controlSubmit(event) {
-        event.preventDefault();
-         this.props.history.push("/buscador/"+ this.state.busqueda);
-    }
     controlCmabios(event) {
         this.setState({ busqueda: event.target.value })
     }
 
-
-
     render() {
+        const peliculasFiltradas = this.state.peliculas.filter(peli =>
+            peli.title.toLowerCase().includes(this.state.busqueda.toLowerCase())
+        );
+
         return (
             <React.Fragment>
                 <h1>Todas las peliculas</h1>
 
-                <form onSubmit={(event) => this.controlSubmit(event)}>
-                    <input type="text" onChange={(event) => this.controlCmabios(event)} value={this.state.busqueda.peliculas} />
-                    <button type="submit">Buscar dentro de peliculas</button>
-                </form>
+                <input
+                    type="text"
+                    placeholder="Buscar..."
+                    onChange={(event) => this.controlCmabios(event)}
+                    value={this.state.busqueda}
+                />
+
+                <ul className="cards-container">
+                    {peliculasFiltradas.map(pelicula => (
+                        <Card key={pelicula.id} info={pelicula} esSerie={false} />
+                    ))}
+                </ul>
 
                 {
                 }
